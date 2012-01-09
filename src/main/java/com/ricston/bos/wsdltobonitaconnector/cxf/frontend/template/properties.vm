@@ -1,0 +1,15 @@
+#i18n files for connector Test
+ConnectorId = ${clientClassName}Connector
+Description = 
+Other = Web Services
+#set($methodValueName = ${stringUtils.capitalizeFirstLetter(${method.Name})})
+
+#Page $methodValueName
+$methodValueName = ${stringUtils.capitalizeFirstLetter(${method.Name})}
+${methodValueName}.description = A description of $methodValueName
+#Entries
+#foreach ($parameter in $method.Parameters)  
+#set($paramValueName = ${stringUtils.capitalizeFirstLetter(${parameter.Name})})
+${paramValueName}.label = $paramValueName
+${paramValueName}.description = Set the value of $paramValueName
+#end

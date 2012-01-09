@@ -1,0 +1,18 @@
+#!/bin/bash
+
+gen_output="output"
+
+if [ -d $gen_output ]; then
+	rm -rf $gen_output
+fi
+
+CLASSPATH=${CLASSPATH}:`dirname $0`/../lib/cxf-wsdl2bonitaconnector-1.0.jar:`dirname $0`/../lib/bonita-server-5.5.1.jar
+
+. wsdl2java -d $gen_output -compile -frontend bonita $1
+
+if [ -d $gen_output ]; then
+	cd $gen_output
+	jar cf bonita-ws-connectors.jar *
+	cd ..
+	echo -e "\nGenerated Bonita connector in directory '$gen_output'\n"
+fi

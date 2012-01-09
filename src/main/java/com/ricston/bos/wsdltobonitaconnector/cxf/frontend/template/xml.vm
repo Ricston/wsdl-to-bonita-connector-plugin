@@ -1,0 +1,57 @@
+<connector>
+	<connectorId>${clientClassName}Connector</connectorId>
+	<version>5.0</version>
+	<categories>
+		<category>
+			<name>Other</name>
+		</category>
+	</categories>
+	<inputs>
+#foreach ($parameter in $method.Parameters)  
+	    <setter>
+			<setterName>set${stringUtils.capitalizeFirstLetter(${parameter.Name})}</setterName>
+			<required></required>
+			<parameters>
+#if (${parameter.getClassName()} == "java.lang.String")
+		        <string></string>
+#elseif ((${parameter.getClassName()} == "java.lang.Integer") || (${parameter.getClassName()} == "int"))  
+                <int>0</int>
+#elseif ((${parameter.getClassName()} == "java.lang.Long") || (${parameter.getClassName()} == "long")) 
+		        <long>0</long>
+#elseif ((${parameter.getClassName()} == "java.lang.Boolean") || (${parameter.getClassName()} == "boolean")) 
+		        <boolean>false</boolean>
+#elseif ((${parameter.getClassName()} == "java.lang.Double") || (${parameter.getClassName()} == "double"))
+		        <double>0.0</double>
+#else           
+	            <object/>
+#end
+			</parameters>
+		</setter>
+#end
+	</inputs>
+	<outputs>
+#if($method.return.ClassName != "void")
+		<getter>
+			<name>${method.Name}Result</name>
+			<metadata/>
+		</getter>
+#end
+	</outputs>
+	<pages>
+#set($index = 0)
+		<page>
+			<pageId>${stringUtils.capitalizeFirstLetter(${method.Name})}</pageId>
+			<widgets>
+#foreach ($parameter in $method.Parameters)
+#set($index = $index + 1)	
+                <text>
+					<labelId>${stringUtils.capitalizeFirstLetter(${parameter.Name})}</labelId>
+					<setter reference="/connector/inputs/setter[$index]"/>
+					<size>20</size>
+					<maxChar>40</maxChar>
+				</text>
+#end
+			</widgets>
+		</page>
+	</pages>
+</connector>

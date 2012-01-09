@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ricston.bos</groupId>
+    <artifactId>cxf-wsdl2bonitaconnector</artifactId>
+    <version>1.0</version>
+    <name>WSDL To Bonita Connector Plugin</name>
+
+    <properties>
+        <bos.Version>5.5.1</bos.Version>
+        <cxf.version>2.4.5</cxf.version>
+    </properties>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>com/ricston/bos/wsdltobonitaconnector/cxf/frontend/template/*.vm</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.ow2.bonita</groupId>
+            <artifactId>bonita-server</artifactId>
+            <version>${bos.Version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-tools-wsdlto-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

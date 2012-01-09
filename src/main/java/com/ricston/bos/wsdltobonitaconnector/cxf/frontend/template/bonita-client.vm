@@ -1,0 +1,72 @@
+package $intf.PackageName;
+
+import java.util.List;
+import java.net.URL;
+
+import javax.xml.namespace.QName;
+#if ($service.PackageName != $intf.PackageName) 
+import ${service.PackageName}.${service.Name};
+#end
+#foreach ($import in $intf.Imports)
+import ${import};
+#end
+
+import org.ow2.bonita.connector.core.ConnectorError;
+import org.ow2.bonita.connector.core.ProcessConnector;
+
+public class ${clientClassName}Connector extends ProcessConnector {
+
+	private static final QName SERVICE_NAME = new QName("$service.Namespace", "$service.ServiceName");
+	
+#foreach ($parameter in $method.Parameters)  
+	private ${parameter.getClassName()} ${parameter.Name};
+#end
+
+#if($method.return.ClassName != "void")
+    private ${method.return.ClassName} ${method.Name}Result;
+#end
+
+	@Override
+	protected void executeConnector() throws Exception {
+    
+		URL wsdlURL = ${service.Name}.WSDL_LOCATION;		
+		$service.Name ss = new ${service.Name}(wsdlURL, SERVICE_NAME);
+        $intf.Name port = ss.get${port.Name}();  
+
+#set($indent = "        ")
+#if($method.Exceptions.size() > 0)
+#set($indent = "			")
+        try {
+#end
+#if($method.return.ClassName != "void")${indent}${method.Name}Result = #else${indent}#end
+port.${method.Name}(#foreach($parameter in $method.Parameters)${parameter.Name}#if($velocityCount != $method.parameterCount), #end#end);
+#if($method.Exceptions.size() > 0)
+        }#foreach($exception in $method.Exceptions)
+		catch ($exception.ClassName e) { 
+			System.out.println("Expected exception: $exception.Name has occurred.");
+            System.out.println(e.toString());
+        }#end
+#end        
+	}
+
+	@Override
+	protected List<ConnectorError> validateValues() {
+		return null;
+	}
+  
+#set($indent = "            ")
+#if($method.return.ClassName != "void")
+	public ${method.return.ClassName} get${stringUtils.capitalizeFirstLetter(${method.Name})}Result() {
+		return ${method.Name}Result;
+	}
+	
+#else${indent}
+#end
+#foreach ($parameter in $method.Parameters)  
+#set($setterName = ${stringUtils.capitalizeFirstLetter(${parameter.Name})})
+	public void set$setterName(${parameter.getClassName()} ${parameter.Name}) {
+		this.${parameter.Name} = ${parameter.Name};
+	}
+
+#end
+}
