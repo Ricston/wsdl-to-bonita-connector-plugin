@@ -5,14 +5,13 @@
 
     <groupId>com.ricston.bos</groupId>
     <artifactId>cxf-wsdl2bonitaconnector</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <name>WSDL To Bonita Connector Plugin</name>
 
     <properties>
         <bos.Version>5.5.1</bos.Version>
         <cxf.version>2.4.5</cxf.version>
     </properties>
-
 
     <build>
         <resources>
