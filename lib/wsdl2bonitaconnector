@@ -6,7 +6,7 @@ if [ -d $gen_output ]; then
 	rm -rf $gen_output
 fi
 
-CLASSPATH=${CLASSPATH}:`dirname $0`/../lib/cxf-wsdl2bonitaconnector-1.0.jar:`dirname $0`/../lib/bonita-server-5.5.1.jar
+CLASSPATH=${CLASSPATH}:`dirname $0`/../lib/${artifactId}-${version}.jar:`dirname $0`/../lib/bonita-server-${bos.Version}.jar
 
 . wsdl2java -d $gen_output -compile -frontend bonita $1
 
