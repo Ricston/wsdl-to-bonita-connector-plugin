@@ -460,14 +460,14 @@ WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for the
 specific language governing rights and limitations under the License.
 The Original Code is Ricston
 The Initial Developer of the Original Code is Ricston Ltd. All portions of
-the code are Copyright (c) 2006-2011 Ricston Ltd. All Rights Reserved.
+the code are Copyright (c) 2006-2012 Ricston Ltd. All Rights Reserved.
 
 EXHIBIT B. Attribution Information
 Subject to the limitations and other requirements in Section 14 of the License,
 the Original Developer requires You to display the following Attribution
 Information:
 
-Attribution Copyright Notice: Copyright (c) 2006-2011 Ricston Ltd.
+Attribution Copyright Notice: Copyright (c) 2006-2012 Ricston Ltd.
 Attribution Phrase (not exceeding 10 words): Your flexible Open Source services partner.
 Attribution URL: http://www.ricston.com
 Graphic Image provided in the Covered Code as file:

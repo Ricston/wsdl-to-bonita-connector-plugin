@@ -1,0 +1,11 @@
+To install the WSDL To Bonita Connector Plugin follow these steps:
+
+1. Install Apache CXF 2.5.x.
+
+2. Type in the wsdl-to-bonita-connector-plugin project root directory "mvn package". An archive is produced in the
+   'target' folder labelled 'cxf-wsdl2bonitaconnector-[version].zip'.
+
+3. From the archive's 'lib' folder, drop cxf-wsdl2bonitaconnector-[version].jar and bonita-server-[version].jar in CXF's
+   'lib' directory.
+
+4. From the archive's 'bin' folder, drop the wsdl2bonitaconnector script in CXF's 'bin' directory.
