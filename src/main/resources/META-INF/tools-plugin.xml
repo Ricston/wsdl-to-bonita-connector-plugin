@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+Copyright (c) Ricston Ltd.  All rights reserved.  http://www.ricston.com
+
+The software in this package is published under the terms of the CPAL v1.0
+license, a copy of which has been included with this distribution in the
+LICENSE.txt file.
+-->
+
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements. See the NOTICE file
 distributed with this work for additional information
@@ -16,14 +24,6 @@ software distributed under the License is distributed on an
 KIND, either express or implied. See the License for the
 specific language governing permissions and limitations
 under the License.
--->
-
-<!--
-Copyright (c) Ricston Ltd.  All rights reserved.  http://www.ricston.com
-
-The software in this package is published under the terms of the CPAL v1.0
-license, a copy of which has been included with this distribution in the
-LICENSE.txt file.
 -->
 <plugin xmlns="http://cxf.apache.org/tools/plugin" name="default" version="" provider="cxf.apache.org">
   <databinding name="jaxb" package="org.apache.cxf.tools.wsdlto.databinding.jaxb" profile="JAXBDataBinding" />
