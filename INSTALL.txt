@@ -1,4 +1,4 @@
-To install the WSDL To Bonita Connector Plugin follow these steps:
+Note: the WSDL To Bonita Connector Plugin  was tested with BOS 5.6.1. To install it follow these steps:
 
 1. Install Apache CXF 2.5.x.
 
